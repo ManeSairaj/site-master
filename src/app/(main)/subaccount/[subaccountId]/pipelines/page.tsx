@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import { getAgencyId } from "@/lib/queries";
 import { redirect } from "next/navigation";
-import React from "react";
 
 type Props = {
   params: { subaccountId: string };

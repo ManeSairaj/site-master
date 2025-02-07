@@ -198,7 +198,7 @@ export const verifyAndAcceptInvitation = async () => {
       role: invitationExists.role,
       createdAt: new Date(),
       updatedAt: new Date(),
-      subaccountId: null
+      subaccountId: null,
     });
     console.log("got user Details");
     await saveActivityLogsNotification({
@@ -630,6 +630,8 @@ export const upsertFunnel = async (
 export const upsertPipeline = async (
   pipeline: Prisma.PipelineUncheckedCreateWithoutLaneInput
 ) => {
+  console.log("pipeline " + JSON.stringify(pipeline));
+
   const response = await db.pipeline.upsert({
     where: { id: pipeline.id || v4() },
     update: pipeline,
