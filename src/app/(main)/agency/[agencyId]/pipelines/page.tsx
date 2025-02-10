@@ -37,7 +37,9 @@ export default function DashboardPage() {
   const [isAddingProject, setIsAddingProject] = useState(false);
   const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
 
-  const handleAddProject = (newProject: Omit<Project, "id">) => {
+  const handleAddProject = (
+    newProject: Omit<Project, "id" | "totalTasks" | "doneTasks" | "frozenTasks">
+  ) => {
     const projectWithId = {
       ...newProject,
       id: `project-${Date.now()}`,
