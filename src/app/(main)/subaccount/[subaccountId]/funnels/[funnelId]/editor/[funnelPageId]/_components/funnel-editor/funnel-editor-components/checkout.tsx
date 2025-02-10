@@ -107,7 +107,7 @@ const Checkout = (props: Props) => {
   };
 
   const goToNextPage = async () => {
-    if (!state.editor.liveMode) return;
+    if (!state.editor.live) return;
     const funnelPages = await getFunnel(funnelId);
     if (!funnelPages || !pageDetails) return;
     if (funnelPages.FunnelPages.length > pageDetails.order + 1) {
@@ -142,12 +142,12 @@ const Checkout = (props: Props) => {
             state.editor.selectedElement.id === props.element.id,
 
           "!border-solid": state.editor.selectedElement.id === props.element.id,
-          "border-dashed border-[1px] border-slate-300": !state.editor.liveMode,
+          "border-dashed border-[1px] border-slate-300": !state.editor.live,
         }
       )}
     >
       {state.editor.selectedElement.id === props.element.id &&
-        !state.editor.liveMode && (
+        !state.editor.live && (
           <Badge className="absolute -top-[23px] -left-[1px] rounded-none rounded-t-lg ">
             {state.editor.selectedElement.name}
           </Badge>
@@ -175,7 +175,7 @@ const Checkout = (props: Props) => {
       </div>
 
       {state.editor.selectedElement.id === props.element.id &&
-        !state.editor.liveMode && (
+        !state.editor.live && (
           <div className="absolute bg-primary px-2.5 py-1 text-xs font-bold  -top-[25px] -right-[1px] rounded-none rounded-t-lg !text-white">
             <Trash
               className="cursor-pointer"
