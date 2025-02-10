@@ -18,7 +18,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
-import { stripe } from "@/lib/stripe";
+import { stripe } from "@/lib/Stripe";
 import { AreaChart } from "@tremor/react";
 import {
   ClipboardIcon,

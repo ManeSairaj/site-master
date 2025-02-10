@@ -240,7 +240,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { db } from "@/lib/db";
-import { stripe } from "@/lib/stripe";
+import { stripe } from "@/lib/Stripe";
 // import { getStripeOAuthLink } from '@/lib/utils'
 import { CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
