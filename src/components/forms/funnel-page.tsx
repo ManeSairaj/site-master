@@ -48,6 +48,7 @@ const CreateFunnelPage: React.FC<CreateFunnelPageProps> = ({
   funnelId,
   order,
   subaccountId,
+  agencyId,
 }) => {
   const { toast } = useToast();
   const router = useRouter();
@@ -86,7 +87,7 @@ const CreateFunnelPage: React.FC<CreateFunnelPageProps> = ({
       );
 
       await saveActivityLogsNotification({
-        agencyId: undefined,
+        agencyId: agencyId,
         description: `Updated a funnel page | ${response?.name}`,
         subaccountId: subaccountId,
       });
@@ -171,7 +172,7 @@ const CreateFunnelPage: React.FC<CreateFunnelPageProps> = ({
                   onClick={async () => {
                     const response = await deleteFunnelePage(defaultData.id);
                     await saveActivityLogsNotification({
-                      agencyId: undefined,
+                      agencyId: agencyId,
                       description: `Deleted a funnel page | ${response?.name}`,
                       subaccountId: subaccountId,
                     });
