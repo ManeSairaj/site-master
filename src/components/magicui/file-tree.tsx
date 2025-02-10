@@ -71,34 +71,38 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       dir,
       ...props
     },
-    ref,
+    ref
   ) => {
     const [selectedId, setSelectedId] = useState<string | undefined>(
-      initialSelectedId,
+      initialSelectedId
     );
     const [expandedItems, setExpandedItems] = useState<string[] | undefined>(
-      initialExpandedItems,
+      initialExpandedItems
     );
 
     const selectItem = useCallback((id: string) => {
       setSelectedId(id);
     }, []);
 
-    const handleExpand = useCallback((id: string) => {
-      setExpandedItems((prev) => {
-        if (prev?.includes(id)) {
-          return prev.filter((item) => item !== id);
-        }
-        return [...(prev ?? []), id];
-      });
-    }, []);
+    const handleExpand = useCallback(
+      (id: string) => {
+        setExpandedItems((prev) => {
+          if (prev?.includes(id)) {
+            return prev.filter((item) => item !== id);
+          }
+          return [...(prev ?? []), id];
+        });
+      },
+      [setExpandedItems]
+    );
+
 
     const expandSpecificTargetedElements = useCallback(
       (elements?: TreeViewElement[], selectId?: string) => {
         if (!elements || !selectId) return;
         const findParent = (
           currentElement: TreeViewElement,
-          currentPath: string[] = [],
+          currentPath: string[] = []
         ) => {
           const isSelectable = currentElement.isSelectable ?? true;
           const newPath = [...currentPath, currentElement.id];
@@ -127,14 +131,14 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           findParent(element);
         });
       },
-      [],
+      []
     );
 
     useEffect(() => {
       if (initialSelectedId) {
         expandSpecificTargetedElements(elements, initialSelectedId);
       }
-    }, [initialSelectedId, elements]);
+    }, [initialSelectedId, elements, expandSpecificTargetedElements]);
 
     const direction = dir === "rtl" ? "rtl" : "ltr";
 
@@ -175,7 +179,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
         </div>
       </TreeContext.Provider>
     );
-  },
+  }
 );
 
 Tree.displayName = "Tree";
@@ -192,7 +196,7 @@ const TreeIndicator = forwardRef<
       ref={ref}
       className={cn(
         "h-full w-px bg-muted absolute left-1.5 rtl:right-1.5 py-3 rounded-md hover:bg-slate-300 duration-300 ease-in-out",
-        className,
+        className
       )}
       {...props}
     />
@@ -225,7 +229,7 @@ const Folder = forwardRef<
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     const {
       direction,
@@ -251,7 +255,7 @@ const Folder = forwardRef<
               "bg-muted rounded-md": isSelect && isSelectable,
               "cursor-pointer": isSelectable,
               "cursor-not-allowed opacity-50": !isSelectable,
-            },
+            }
           )}
           disabled={!isSelectable}
           onClick={() => handleExpand(value)}
@@ -278,7 +282,7 @@ const Folder = forwardRef<
         </AccordionPrimitive.Content>
       </AccordionPrimitive.Item>
     );
-  },
+  }
 );
 
 Folder.displayName = "Folder";
@@ -304,7 +308,7 @@ const File = forwardRef<
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     const { direction, selectedId, selectItem } = useTree();
     const isSelected = isSelect ?? selectedId === value;
@@ -322,7 +326,7 @@ const File = forwardRef<
               "bg-muted": isSelected && isSelectable,
             },
             isSelectable ? "cursor-pointer" : "opacity-50 cursor-not-allowed",
-            className,
+            className
           )}
           onClick={() => selectItem(value)}
         >
@@ -331,7 +335,7 @@ const File = forwardRef<
         </AccordionPrimitive.Trigger>
       </AccordionPrimitive.Item>
     );
-  },
+  }
 );
 
 File.displayName = "File";
@@ -345,17 +349,20 @@ const CollapseButton = forwardRef<
 >(({ className, elements, expandAll = false, children, ...props }, ref) => {
   const { expandedItems, setExpandedItems } = useTree();
 
-  const expendAllTree = useCallback((elements: TreeViewElement[]) => {
-    const expandTree = (element: TreeViewElement) => {
-      const isSelectable = element.isSelectable ?? true;
-      if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id]);
-        element.children.forEach(expandTree);
-      }
-    };
+  const expendAllTree = useCallback(
+    (elements: TreeViewElement[]) => {
+      const expandTree = (element: TreeViewElement) => {
+        const isSelectable = element.isSelectable ?? true;
+        if (isSelectable && element.children && element.children.length > 0) {
+          setExpandedItems?.((prev) => [...(prev ?? []), element.id]);
+          element.children.forEach(expandTree);
+        }
+      };
 
-    elements.forEach(expandTree);
-  }, []);
+      elements.forEach(expandTree);
+    },
+    [elements]
+  );
 
   const closeAll = useCallback(() => {
     setExpandedItems?.([]);

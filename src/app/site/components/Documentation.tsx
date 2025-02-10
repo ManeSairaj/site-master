@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Documentation: React.FC = () => {
   return (
@@ -34,7 +34,9 @@ const Documentation: React.FC = () => {
               Customizable Components
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Learn how to use Webora's wide range of pre-built components, including forms and interactive elements, to speed up your development process.
+              Learn how to use Webora&apos;s wide range of pre-built components,
+              including forms and interactive elements, to speed up your
+              development process.
             </p>
             <a
               href="#customizable-components"
@@ -66,7 +68,8 @@ const Documentation: React.FC = () => {
               React JSX Code Generation
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Get insights on how Webora allows you to export clean, production-ready React JSX code for developers.
+              Get insights on how Webora allows you to export clean,
+              production-ready React JSX code for developers.
             </p>
             <a
               href="#jsx-code-generation"
@@ -98,7 +101,8 @@ const Documentation: React.FC = () => {
               Dynamic Content Management
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Discover how to integrate Webora with databases to manage and update dynamic content with ease.
+              Discover how to integrate Webora with databases to manage and
+              update dynamic content with ease.
             </p>
             <a
               href="#dynamic-content-management"
@@ -130,7 +134,8 @@ const Documentation: React.FC = () => {
               Intuitive Drag-and-Drop Editor
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Master Webora's intuitive drag-and-drop editor, allowing users to build websites without writing any code.
+              Master Webora&apos;s intuitive drag-and-drop editor, allowing
+              users to build websites without writing any code.
             </p>
             <a
               href="#drag-drop-editor"
@@ -162,7 +167,8 @@ const Documentation: React.FC = () => {
               Global State Management
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Explore how Webora manages global state seamlessly across components, ensuring consistency in user experience.
+              Explore how Webora manages global state seamlessly across
+              components, ensuring consistency in user experience.
             </p>
             <a
               href="#global-state-management"
@@ -194,7 +200,8 @@ const Documentation: React.FC = () => {
               Deployment & Performance
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Get tips on how to deploy your Webora projects efficiently, while optimizing for performance and security.
+              Get tips on how to deploy your Webora projects efficiently, while
+              optimizing for performance and security.
             </p>
             <a
               href="#deployment-performance"

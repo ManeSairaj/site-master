@@ -65,7 +65,7 @@ const FunnelForm: React.FC<CreateFunnelProps> = ({
         subDomainName: defaultData.subDomainName || "",
       });
     }
-  }, [defaultData]);
+  }, [defaultData, form]);
 
   useEffect(() => {
     getAgencyId().then((id) => setAgencyId(id ?? ""));

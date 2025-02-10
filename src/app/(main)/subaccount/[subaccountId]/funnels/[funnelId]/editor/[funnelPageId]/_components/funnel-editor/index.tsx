@@ -21,7 +21,7 @@ const FunnelEditor = ({ pageId, liveMode }: Props) => {
     }
 
     console.log(state.editor);
-  }, [liveMode]);
+  }, [liveMode, dispatch, state.editor]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +37,7 @@ const FunnelEditor = ({ pageId, liveMode }: Props) => {
       });
     };
     fetchData();
-  }, [pageId]);
+  }, [pageId, dispatch, liveMode]);
 
   const handleClick = () => {
     dispatch({

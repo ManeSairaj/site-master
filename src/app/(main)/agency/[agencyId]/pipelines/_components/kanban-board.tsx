@@ -31,7 +31,7 @@ export function KanbanBoard({
   return (
     <div className="bg-transparent dark:text-white flex space-x-2 overflow-x-auto no-scrollBar min-h-[100%]">
       {lanes.map((lane, index) => (
-        <Droppable droppableId={lane.id} type="TASK">
+        <Droppable droppableId={lane.id} type="TASK" key={index}>
           {(provided) => (
             <div
               ref={provided.innerRef}

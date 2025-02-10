@@ -1,5 +1,5 @@
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Database, Image, Plus, SettingsIcon, SquareStackIcon } from "lucide-react";
+import { Database, Image as Img, Plus, SettingsIcon, SquareStackIcon } from "lucide-react";
 import React from "react";
 
 type Props = {};
@@ -65,7 +65,7 @@ const TabList = (props: Props) => {
           value="Media"
           className="w-10 h-10 p-0 data-[state=active]:bg-muted rounded-full"
         >
-          <Image />
+          <Img />
         </TabsTrigger>
         <span className="text-xs mt-1 bg-white text-gray-600 px-2 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
           Media
