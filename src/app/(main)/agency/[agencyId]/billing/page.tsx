@@ -1,36 +1,22 @@
-'use client'
-import {
-  deleteSubAccount,
-  getSubaccountDetails,
-  saveActivityLogsNotification,
-} from '@/lib/queries'
-import { useRouter } from 'next/navigation'
-import React from 'react'
+"use client";
 
-type Props = {
-  subaccountId: string
-}
+import React from "react";
+import { useParams } from "next/navigation";
+import DeleteButton from "./_components/DeleteButton";
 
-const DeleteButton = ({ subaccountId }: Props) => {
-  const router = useRouter()
+const BillingPage = () => {
+  const { agencyId } = useParams();
+
+  if (!agencyId || typeof agencyId !== "string") {
+    return <div>Error: Agency ID is missing or invalid.</div>;
+  }
 
   return (
-    <div
-      className="text-white"
-      onClick={async () => {
-        const response = await getSubaccountDetails(subaccountId)
-        await saveActivityLogsNotification({
-          agencyId: undefined,
-          description: `Deleted a subaccount | ${response?.name}`,
-          subaccountId,
-        })
-        await deleteSubAccount(subaccountId)
-        router.refresh()
-      }}
-    >
-      Delete Sub Account
+    <div>
+      <h1>Billing Page</h1>
+      {/* <DeleteButton subaccountId={agencyId} /> */}
     </div>
-  )
-}
+  );
+};
 
-export default DeleteButton
+export default BillingPage;
