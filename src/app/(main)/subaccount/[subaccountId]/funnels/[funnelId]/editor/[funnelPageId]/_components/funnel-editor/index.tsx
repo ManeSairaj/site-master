@@ -7,13 +7,13 @@ import React, { useEffect } from "react";
 import Recursive from "./funnel-editor-components/Recursive";
 import { getFunnelPageDetails } from "@/lib/queries";
 
-type Props = { pageId: string; liveMode?: boolean };
+type Props = { pageId: string; live?: boolean };
 
-const FunnelEditor = ({ pageId, liveMode }: Props) => {
+const FunnelEditor = ({ pageId, live }: Props) => {
   const { state, dispatch } = useEditor();
 
   useEffect(() => {
-    if (liveMode) {
+    if (live) {
       dispatch({
         type: "TOGGLE_LIVE_MODE",
         payload: { value: true },
@@ -21,7 +21,7 @@ const FunnelEditor = ({ pageId, liveMode }: Props) => {
     }
 
     console.log(state.editor);
-  }, [liveMode, dispatch, state.editor]);
+  }, [live, dispatch, state.editor]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,12 +32,12 @@ const FunnelEditor = ({ pageId, liveMode }: Props) => {
         type: "LOAD_DATA",
         payload: {
           elements: response.content ? JSON.parse(response?.content) : "",
-          withLive: !!liveMode,
+          withLive: !!live,
         },
       });
     };
     fetchData();
-  }, [pageId, dispatch, liveMode]);
+  }, [pageId, dispatch, live]);
 
   const handleClick = () => {
     dispatch({
