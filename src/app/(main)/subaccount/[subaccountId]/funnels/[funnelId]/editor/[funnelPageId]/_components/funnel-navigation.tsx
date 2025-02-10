@@ -51,7 +51,17 @@ const FunnelEditorNavigation = ({
 }: Props) => {
   const router = useRouter();
   const { state, dispatch } = useEditor();
-  const { funnelId, subaccountId, funnelPageId } = useParams();
+  const {
+    funnelId: funnelIdParam,
+    subaccountId: subaccountIdParam,
+    funnelPageId,
+  } = useParams();
+  const funnelId = Array.isArray(funnelIdParam)
+    ? funnelIdParam[0]
+    : funnelIdParam;
+  const subaccountId = Array.isArray(subaccountIdParam)
+    ? subaccountIdParam[0]
+    : subaccountIdParam;
 
   const handleOnBlurTitleChange: FocusEventHandler<HTMLInputElement> = async (
     event
