@@ -1,4 +1,6 @@
-import { AlertDescription } from '@/components/ui/alert'
+"use server";
+
+import { AlertDescription } from "@/components/ui/alert";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -8,8 +10,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import { Button } from '@/components/ui/button'
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -17,24 +19,23 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command'
-import { getAuthUserDetails } from '@/lib/queries'
-import { SubAccount } from '@prisma/client'
-import Image from 'next/image'
-import Link from 'next/link'
+} from "@/components/ui/command";
+import { getAuthUserDetails } from "@/lib/queries";
+import { SubAccount } from "@prisma/client";
+import Image from "next/image";
+import Link from "next/link";
 
-import React from 'react'
-import CreateSubaccountButton from './_components/create-subaccount-btn'
-import DeleteButton from './_components/delete-button'
-
+import React from "react";
+import CreateSubaccountButton from "./_components/create-subaccount-btn";
+import DeleteButton from "./_components/delete-button";
 
 type Props = {
-  params: { agencyId: string }
-}
+  params: { agencyId: string };
+};
 
 const AllSubaccountsPage = async ({ params }: Props) => {
-  const user = await getAuthUserDetails()
-  if (!user) return
+  const user = await getAuthUserDetails();
+  if (!user) return;
 
   return (
     <AlertDialog>
@@ -78,8 +79,8 @@ const AllSubaccountsPage = async ({ params }: Props) => {
                     </Link>
                     <AlertDialogTrigger asChild>
                       <Button
-                        size={'sm'}
-                        variant={'destructive'}
+                        size={"sm"}
+                        variant={"destructive"}
                         className="w-20 hover:bg-red-600 hover:text-white !text-white"
                       >
                         Delete
@@ -116,7 +117,7 @@ const AllSubaccountsPage = async ({ params }: Props) => {
         </Command>
       </div>
     </AlertDialog>
-  )
-}
+  );
+};
 
-export default AllSubaccountsPage
+export default AllSubaccountsPage;
